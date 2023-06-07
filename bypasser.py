@@ -1522,8 +1522,31 @@ def dalink(url):
         return r.json()["url"]
     except BaseException:
         return "Something went wrong :("
+    
+#urlshorten.in
 
+def urlshorten(url):
+    client = cloudscraper.create_scraper(allow_brotli=False)
+    DOMAIN = "https://lslink.in/"
+    url = url[:-1] if url[-1] == "/" else url
+    code = url.split("/")[-1]
+    final_url = f"{DOMAIN}/{code}"
+    ref = "https://dl.urlshorten.in/"
+    h = {"referer": ref}
+    resp = client.get(final_url, headers=h)
+    soup = BeautifulSoup(resp.content, "html.parser")
+    inputs = soup.find_all("input")
+    data = {input.get("name"): input.get("value") for input in inputs}
+    h = {"x-requested-with": "XMLHttpRequest"}
+    time.sleep(5)
+    r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
+    try:
+        return r.json()["url"]
+    except BaseException:
+        return "Something went wrong :("
 
+    
+  
 # easysky
 
 
@@ -2024,6 +2047,13 @@ def shortners(url):
     elif "https://v2.kpslink.in/" in url:
         print("entered v2 kpslink:", url)
         return v2kpslink(url)
+    
+    # url shorten
+    elif "https://link.urlshorten.in/" in url:
+        print("entered teamhdt shirtner:", url)
+        return urlshorten(url)
+    
+    
 
     # earnlink
     elif "https://earnlink.io/" in url:
