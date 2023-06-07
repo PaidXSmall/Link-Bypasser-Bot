@@ -1500,6 +1500,27 @@ def tiny(url):
         return r.json()["url"]
     except BaseException:
         return "Something went wrong :("
+    
+#dalink
+
+def dalink(url):
+    client = requests.session()
+    DOMAIN = "https://dalink.in"
+    url = url[:-1] if url[-1] == "/" else url
+    code = url.split("/")[-1]
+    final_url = f"{DOMAIN}/{code}"
+    ref = "https://www.tamilhit.tech/"
+    h = {"referer": ref}
+    resp = client.get(final_url, headers=h)
+    soup = BeautifulSoup(resp.content, "html.parser")
+    inputs = soup.find_all("input")
+    data = {input.get("name"): input.get("value") for input in inputs}
+    h = {"x-requested-with": "XMLHttpRequest"}
+    r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
+    try:
+        return r.json()["url"]
+    except BaseException:
+        return "Something went wrong :("
 
 
 # easysky
@@ -1929,6 +1950,11 @@ def shortners(url):
     elif "tinyfy.in" in url:
         print("entered tinyfy:", url)
         return tiny(url)
+    
+    # dalink
+    elif "dalink.in" in url:
+        print("entered dalink:", url)
+        return dalink(url)
 
     # easysky
     elif "m.easysky.in" in url:
