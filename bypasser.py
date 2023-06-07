@@ -1952,7 +1952,7 @@ def shortners(url):
         return tiny(url)
     
     # dalink
-    elif "dalink.in" in url:
+    elif "https://dalink.in/" in url:
         print("entered dalink:", url)
         return dalink(url)
 
