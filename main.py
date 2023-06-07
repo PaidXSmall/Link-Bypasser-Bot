@@ -18,17 +18,17 @@ from scraper import scrapper, scrapper_sites
 from texts import HELP_TEXT
 
 # bot
-bot_token = os.environ.get("TOKEN", "5772414951:AAHaniP9K1oZRG0IVDz98nN_mGxkMWJJbNc")
+bot_token = os.environ.get("TOKEN", "5893622270:AAGIGpBLfpILJldx1uS5X2mp88AR4bIjRWQ")
 api_hash = os.environ.get("HASH", "01a4118f7aec3b2caece77a057fdd197") 
 api_id = os.environ.get("ID", "19491592")
-OWNER_ID = os.environ.get("OWNER_ID", "5175000602")
+OWNER_ID = os.environ.get("OWNER_ID", "2113726835")
 ADMIN_LIST = [int(ch) for ch in (os.environ.get("ADMIN_LIST", f"{OWNER_ID}")).split()]
-OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "Rushidhar1999")
-PERMANENT_GROUP = os.environ.get("PERMANENT_GROUP", "-1001811511054")
+OWNER_USERNAME = os.environ.get("OWNER_USERNAME", "KristyX_TG")
+PERMANENT_GROUP = os.environ.get("PERMANENT_GROUP", "-1001585151897")
 GROUP_ID = [int(ch) for ch in (os.environ.get("GROUP_ID", f"{PERMANENT_GROUP}")).split()]
-UPDATES_CHANNEL = str(os.environ.get("UPDATES_CHANNEL", "USE_FULL_BOTZ"))
-DB_URL = os.environ.get("DB_URL", "mongodb+srv://rushidhar:rushidharr@rushiiiii.1ebtm6s.mongodb.net/?retryWrites=true&w=majority")
-U_NAME = os.environ.get("BOT_USERNAME", "Rushidhar_S_1999_bot")
+UPDATES_CHANNEL = str(os.environ.get("UPDATES_CHANNEL", "PeterXClouD"))
+DB_URL = os.environ.get("DB_URL", "mongodb+srv://rename:kristyx@cluster0.bvlmg0s.mongodb.net/?retryWrites=true&w=majority")
+U_NAME = os.environ.get("BOT_USERNAME", "LinkByPass_RoBoT")
 
 app = Client("my_bot",api_id=api_id, api_hash=api_hash,bot_token=bot_token)
 
