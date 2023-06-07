@@ -1526,8 +1526,8 @@ def dalink(url):
 #urlshorten.in
 
 def urlshorten(url):
-    client = cloudscraper.create_scraper(allow_brotli=False)
-    DOMAIN = "https://urlshorten.in/"
+    client = requests.session()
+    DOMAIN = "https://urlshorten.in"
     url = url[:-1] if url[-1] == "/" else url
     code = url.split("/")[-1]
     final_url = f"{DOMAIN}/{code}"
@@ -1538,7 +1538,6 @@ def urlshorten(url):
     inputs = soup.find_all("input")
     data = {input.get("name"): input.get("value") for input in inputs}
     h = {"x-requested-with": "XMLHttpRequest"}
-    time.sleep(5)
     r = client.post(f"{DOMAIN}/links/go", data=data, headers=h)
     try:
         return r.json()["url"]
@@ -2049,7 +2048,7 @@ def shortners(url):
         return v2kpslink(url)
     
     # url shorten
-    elif "link.urlshorten.in/" in url:
+    elif "https://link.urlshorten.in/" in url:
         print("entered teamhdt shirtner:", url)
         return urlshorten(url)
     
