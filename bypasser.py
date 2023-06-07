@@ -1525,7 +1525,7 @@ def dalink(url):
     
 #urlshorten.in
 
-def dalink(url):
+def urlshorten(url):
     client = cloudscraper.create_scraper(allow_brotli=False)
     DOMAIN = "https://lslink.in"
     url = url[:-1] if url[-1] == "/" else url
